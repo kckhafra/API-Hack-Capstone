@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <main class = "container" id="js-container">
+        <h1>Vacation Planner</h1>
+        <form>
+            <label for="country">Country</label>
+            <input id="js-country" type="text" name="country" required>
+
+            <label for="currency">Currency</label>
+            <input id="js-currency" type="text" name="currency" required>
+
+            <label for="locale">Locale</label>
+            <input id="js-locale" type="text" name="locale" required>
+
+            <label for="origin-place">Leaving From</label>
+            <input id="js-leaving-from" type="text" name="origin-place" required>
+
+            <label for="destination">Destination</label>
+            <input id="js-destination" type="text" name="destination" required>
+
+            <label for="outbound-date">Leaving Date</label>
+            <input id="js-leaving-date" type="date" name="outbound-date" value = "anytime" >
+
+            <label for="inbound-date">Return Date</label>
+            <input id="js-return-date" type="date" name="locale" value="anytime">
+
+            
+            <input id="submit" type="submit" value="submit">
+
+            
+            
+        </form>
+
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
