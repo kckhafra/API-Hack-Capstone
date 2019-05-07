@@ -2,6 +2,33 @@
     box-sizing: border-box;
 }
 
-input{
+input, label{
     display: block;
 }
+.radio-buttons{
+    display: flex;
+}
+
+.dropdown{
+    position: relative;
+    display: block;
+    width: 92px;
+}
+.dropdown2{
+    position: relative;
+    display: block;
+    width: 30px;
+}
+.dropdown-content2{
+    display: none;
+}
+.dropdown2:hover .dropdown-content2 {
+  display: block;
+}
+.dropdown-content{
+    display: none;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+

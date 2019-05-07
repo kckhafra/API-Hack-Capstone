@@ -1,12 +1,30 @@
-const apiKey = "prtl6749387986743898559646983194"
+const clientId = "3K0UNTQC1XJXH3IY55LUZ34RNEAG5X4HLMXJMEX5CI13H10N"
+const clientSecret = "OLIUSNXXSDOXGWYMPXJOUI2Z40MCQXTC1Y44Z2GABROXEOGB" 
+const searchUrl = "https://api.foursquare.com/v2/venues/explore"
+
+function formatQueryParameters(params){
+    const queryItems = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    return queryItems.join('&')
+}
 
 
 
+function getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfVenue, sortValue){
+    params = {
+        client_id: clientId,
+        client_secret: clientSecret,
+        v: 20190501,
+        near: startingPoint,
+        radius: radiusValue,
+        limit: maxResults,
+        time: timeOfDay,
+        section: typeOfVenue,
+        SortByDistance: sortValue
+    }
 
-function getFlightInfo(countryValue, currencyValue, localeValue, originPlaceValue, destinationValue, leavingDateValue, returnDateValue){
-    
+    const queryStrings = formatQueryParameters(params);
 
-    const url = `http://partners.api.skyscanner.net/apiservices/browseroutes/v1.0/${countryValue}/${currencyValue}/${localeValue}/${originPlaceValue}/${destinationValue}/${leavingDateValue}/${returnDateValue}?apiKey=${apiKey}`
+    const url = searchUrl + '?' + queryStrings 
     
     fetch(url) 
         .then(response => {
@@ -21,18 +39,44 @@ function getFlightInfo(countryValue, currencyValue, localeValue, originPlaceValu
         })
 }
 
+function mileToMeter(a, b) { return $("#js-radius").val() * 1609.344
+}
+
+function getTypeOfVenueValue(){
+    const radios = document.getElementsByName ("type")
+    for (let i=0; i<radios.length; i++) {
+        if (radios[i].checked) {
+            return radios[i].value;
+        }
+    }
+}
+
+function getSortValue(){
+    const radios2 = document.getElementsByName("sort")
+    for (let i=0; i<radios2.length; i++) {
+        if (radios2[i].checked) {
+            return radios2[i].value;
+        }
+    }
+}
+
 function watchForm() {
     $("form").submit(function(event){
         event.preventDefault();
-        const countryValue = $("#js-country").val();
-        const currencyValue = $("#js-currency").val();
-        const localeValue = $("#js-locale").val();
-        const originPlaceValue = $("#js-leaving-from").val();
-        const destinationValue = $("#js-destination").val();
-        const leavingDateValue = $("#js-leaving-date").val();
-        const returnDateValue = $("#js-return-date").val();
-        getFlightInfo(countryValue, currencyValue, localeValue, originPlaceValue, destinationValue, leavingDateValue, returnDateValue)
-    })
-}
+        const startingPoint = $("#js-starting-point").val();
+        const radiusValue = mileToMeter()
+        const maxResults = $("#js-max-results").val();
+        const timeOfDay = $("#js-time-of-day").val();
+        const typeOfVenue = getTypeOfVenueValue();
+        const sortValue = getSortValue();
+        getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfVenue, sortValue)
+        
+        }) 
+    }
+
+    
+
+
+
 
 $(watchForm)
