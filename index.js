@@ -7,6 +7,10 @@ function formatQueryParameters(params){
     return queryItems.join('&')
 }
 
+function formatVenueAddress(responseJson){
+    const venueAddress = responseJson.response.groups[0].items.map(function(key){ return key.venue.location.formattedAddress});
+    return venueAddress.join('||');
+}
 
 
 function getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfVenue, sortValue){
@@ -26,6 +30,7 @@ function getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfV
 
     const url = searchUrl + '?' + queryStrings 
     
+    
     fetch(url) 
         .then(response => {
             if (response.ok){
@@ -33,13 +38,24 @@ function getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfV
             }
             throw new Error(response.statusText);
         })
-        .then(responseJson => console.log(responseJson))
+        .then(responseJson => {
+            const lat = responseJson.response.geocode.center.lat;
+            const lng = responseJson.response.geocode.center.lng;
+            const mapStartPoint = responseJson.response.geocode.where;
+            const venueAddressString = formatVenueAddress(responseJson);
+            getMapInfo(lat, lng, mapStartPoint, venueAddressString);
+        })
         .catch(err=>{
             $('#js-error-message').text(`something went wrong${err.message}`)
         })
 }
 
-function mileToMeter(a, b) { return $("#js-radius").val() * 1609.344
+
+
+
+
+function mileToMeter(a, b) { 
+    return $("#js-radius").val() * 1609.344
 }
 
 function getTypeOfVenueValue(){
@@ -70,13 +86,44 @@ function watchForm() {
         const typeOfVenue = getTypeOfVenueValue();
         const sortValue = getSortValue();
         getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfVenue, sortValue)
-        
+        getMapInfo()
         }) 
     }
+
+    const mapKey = "9hamH9Q5QnLLJnGd3D0nTCDbbmARCP4e"
+    const mapSearchUrl = "https://www.mapquestapi.com/staticmap/v5/map"
+    
+    function formatMapQueryParameters(mapParams){
+        console.log(mapParams)
+        const mapQueryItems = Object.keys(mapParams).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(mapParams[key])}`)
+        return mapQueryItems.join('&')
+    }
+
+     function getMapInfo(lat, lng, mapStartPoint, venueAddressString){
+         
+         mapParams = {
+             key: mapKey,
+             size: 600+","+400,
+             declutter: "true",
+             locations: lat+","+lng+`|flag-sm-green-${mapStartPoint}||${venueAddressString}`
+         }
+
+        const mapQueryString = formatMapQueryParameters(mapParams);
+        console.log(mapQueryString)
+        const mapUrl = mapSearchUrl + "?" + mapQueryString;
+        displayResults(mapUrl)
+     }
+     
+  
+     function displayResults(mapUrl){
+         console.log(mapUrl)
+        $('main').empty(); 
+        $("main").html(`<div class = imageContainer><img src = "${mapUrl}"></div>`)
+     }
+
 
     
 
 
 
-
-$(watchForm)
+$(watchForm())
