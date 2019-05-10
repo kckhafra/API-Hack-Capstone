@@ -103,3 +103,16 @@ h1{
     font-family: 'Tenor Sans', sans-serif;
     font-size: 25px;
 }
+
+.return {
+    display: block;
+    margin-top: 30px;
+    
+    background-color: rgb(92, 167, 241);
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bolder;
+    margin-right: auto;
+    margin-left: auto;
+}

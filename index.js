@@ -73,6 +73,7 @@ function getSortValue(){
 }
 
 function watchForm() {
+    
     $("form").submit(function(event){
         event.preventDefault();
         const startingPoint = $("#js-starting-point").val();
@@ -85,7 +86,9 @@ function watchForm() {
         getMapInfo()
         
         
+        
         }) 
+        handleReturn()
     }
 
     const mapKey = "9hamH9Q5QnLLJnGd3D0nTCDbbmARCP4e"
@@ -126,14 +129,18 @@ function watchForm() {
                 const venueAddress = key.venue.location.address + "<br>" + key.venue.location.city + " " + key.venue.location.state + "<br>" + key.venue.location.country + " " + key.venue.location.postalCode
                 return `
             <li>${venueName} <br> ${venueAddress}</li> `})};
-            
             </ul>
+            
+            <button class="return" id="return" type="button">Return</button>
+        
+
             <br>
             
             <div class = map-container>
                 <img src = "${mapUrl}">
-            </div>
-        </section>
+            </section>
+        </div>
+        
         <style>
                 li{
                     
@@ -144,6 +151,13 @@ function watchForm() {
             `)
      }
 
+     function handleReturn(){
+        $('main').on("click", ".return",
+        function(event) {
+          event.preventDefault();
+          location.reload()
+        })
+    }   
 
     
 
