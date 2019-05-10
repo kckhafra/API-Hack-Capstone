@@ -10,7 +10,8 @@ h1{
 body{
     margin: 0;
     padding: 0;
-    
+
+    font-family: 'Tenor Sans', sans-serif;
     
 }
 input, label{
@@ -19,19 +20,14 @@ input, label{
 
 
 
+
 .banner {
-    background-image: url("https://www.goodnet.org/photos/620x0/24453.jpg");
-}
-
-
-
-div{
     height: 200px;
+    background-image: url("https://www.goodnet.org/photos/620x0/24453.jpg");
+    
+    
 }
 
-body{
-    font-family: 'Tenor Sans', sans-serif;
-}
 
 
 
