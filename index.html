@@ -3,95 +3,73 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>API Hack Capstone</title>
     <link href="main.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Tenor+Sans" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  </head>
+    
+</head>
 
   <body>
+    <div class = "banner"></div>
     <main class = "container" id="js-container">
-        <h1>Venue Locator</h1>
-        <form>
-            <label for="starting-point">Starting Point</label>
-            <input id="js-starting-point" type="text" name="starting-point" required>
+            <div class="venue-container">
+                <form>
+                    <h1>Venue Locator</h1>
 
-            <label for="radius">Radius</label>
-            <input id="js-radius" type="number" name="radius" max="60" required>
+            
 
-            <label for= "maximum results">Maximum results</label>
-            <input id="js-max-results" type="number" name="trending" value="10">
+                    <label for="starting-point">Starting Point</label>
+                    <input id="js-starting-point" class="venue-inputs" type="text" name="starting-point" placeholder="Full address" required>
+            
 
-            <label for="time-of-day">Time of Day</label>
-            <input id="js-time-of-day" type="time" name="time-of-day">
+                    <label for="radius">Radius</label>
+                    <input class="venue-inputs" id="js-radius" type="number" name="radius" max="60" placeholder="In miles. Max=60" required>
 
+            
 
-            <div class="dropdown">
-                <button class="dropbtn1">Type of Venue</button>
+                    <label for= "maximum results">Maximum results</label>
+                    <input class="venue-inputs" id="js-max-results" type="number" name="trending" value="5">
 
-                <div class="dropdown-content">
-                        <div class = "radio-buttons">
-                            <input id="food" type="radio" name="type" value="Food" checked>
-                            <label>Food</label>
-                        </div>
-    
-                        <div class = "radio-buttons">
-                            <input id="drinks" type="radio" name="type" value="drinks">Drinks
-                        </div>
-    
-                        <div class = "radio-buttons">
-                            <input id="cofee" type="radio" name="type" value="Cofee">Cofee
-                        </div>
-    
-                        <div class = "radio-buttons">
-                            <input id="Shops" type="radio" name="type" value="Shops">Shops
-                        </div>
-    
-                        <div class = "radio-buttons">
-                            <input id="arts" type="radio" name="type" value="Arts" >Arts
-                        </div>
-    
-                        <div class = "radio-buttons">
-                            <input id="outdoors" type="radio" name="type" value="Outdoors">Outdoors
-                        </div>
-    
-                        <div class = "radio-buttons">
-                            <input id="sights" type="radio" name="type" value="Sights">Sights
-                        </div>
-    
-                        <div class = "radio-buttons">
-                            <input id="trending" type="radio" name="type" value="Trending">Trending
-                        </div>
-    
-                        <div class = "radio-buttons">
-                            <input id="top-picks" type="radio" name="type" value="Top Picks">Top Picks
-                        </div>
-                </div>
+            
+
+                    <label for="time-of-day">Time of Day</label>
+                    <input class="venue-inputs" id="js-time-of-day" type="time" name="time-of-day">
+
+            
+                
+                    <label>Venue Categories</label>
+                    <select id="venueCategories">
+                        <option id="food" name="Food" value="Food">Food</option>
+                        <option id="drinks" name="Drinks" value="drinks">Drinks</option>
+                        <option id="cofee" name="Cofee" value="Cofee">Cofee</option>
+                        <option id="Shops" name="Shops" value="Shops">Shops</option>
+                        <option id="arts" name="Arts" value="Arts" >Arts</option>
+                        <option id="outdoors" name="Outdoors" value="Outdoors">Outdoors</option>
+                        <option id="sights" name="Sights" value="Sights">Sights</option>
+                        <option id="trending" name="Trending" value="Trending">Trending</option>  
+                        <option id="top-picks" name="Top Picks" value="Top Picks">Top Picks</option>
+                    </select>
+                
+
+            
+
+                    <label>Sort</label>
+                    <select class="sort">
+                            <option value="true">Sort By Distance</option>
+                            <option value="false">Sort By Relevance</option>
+                    </select>
+
+                    <input class="submit" id="submit" type="submit" value="Search">
+                </form>
             </div>
-
-            <div class="dropdown2">
-                    <button class="dropbtn2">Sort</button>
-                <div class="dropdown-content2">
-
-                    <div class = "radio-buttons">
-                        <input for="yes" type= "radio" value="true" name="sort">
-                        <label>Sort By Distance</label>
-                    </div>
+            
                     
-                    <div class = "radio-buttons">
-                        
-                        <input id="no" type="radio" name="sort" value="false" checked> 
-                        <label>Sort By Relevance</label>
-                    </div>
-                </div>
-            </div>
-
+                
             
-            <input id="submit" type="submit" value="submit">
 
             
             
-        </form>
-
     </main>
 
     <script src="index.js"></script>

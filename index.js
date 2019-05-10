@@ -8,8 +8,11 @@ function formatQueryParameters(params){
 }
 
 function formatVenueAddress(responseJson){
-    const venueAddress = responseJson.response.groups[0].items.map(function(key){ return key.venue.location.formattedAddress});
-    return venueAddress.join('||');
+    const venueAddress = responseJson.response.groups[0].items.map(function(key){ return key.venue.location.formattedAddress + `|flag-red-sm-${key.venue.name}||`});
+   
+   console.log(venueAddress)
+    return venueAddress.join();
+    
 }
 
 
@@ -43,7 +46,10 @@ function getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfV
             const lng = responseJson.response.geocode.center.lng;
             const mapStartPoint = responseJson.response.geocode.where;
             const venueAddressString = formatVenueAddress(responseJson);
-            getMapInfo(lat, lng, mapStartPoint, venueAddressString);
+            getMapInfo(lat, lng, mapStartPoint, venueAddressString, responseJson);
+            
+            
+            
         })
         .catch(err=>{
             $('#js-error-message').text(`something went wrong${err.message}`)
@@ -59,21 +65,11 @@ function mileToMeter(a, b) {
 }
 
 function getTypeOfVenueValue(){
-    const radios = document.getElementsByName ("type")
-    for (let i=0; i<radios.length; i++) {
-        if (radios[i].checked) {
-            return radios[i].value;
-        }
-    }
+    return $("#venueCategories").val()
 }
 
 function getSortValue(){
-    const radios2 = document.getElementsByName("sort")
-    for (let i=0; i<radios2.length; i++) {
-        if (radios2[i].checked) {
-            return radios2[i].value;
-        }
-    }
+    return $("sort").val()
 }
 
 function watchForm() {
@@ -87,6 +83,8 @@ function watchForm() {
         const sortValue = getSortValue();
         getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfVenue, sortValue)
         getMapInfo()
+        
+        
         }) 
     }
 
@@ -99,7 +97,7 @@ function watchForm() {
         return mapQueryItems.join('&')
     }
 
-     function getMapInfo(lat, lng, mapStartPoint, venueAddressString){
+     function getMapInfo(lat, lng, mapStartPoint, venueAddressString, responseJson){
          
          mapParams = {
              key: mapKey,
@@ -111,14 +109,39 @@ function watchForm() {
         const mapQueryString = formatMapQueryParameters(mapParams);
         console.log(mapQueryString)
         const mapUrl = mapSearchUrl + "?" + mapQueryString;
-        displayResults(mapUrl)
+        displayResults(mapUrl, responseJson)
      }
      
-  
-     function displayResults(mapUrl){
-         console.log(mapUrl)
+    
+    
+     function displayResults(mapUrl, responseJson){
+        console.log(responseJson)
+        
         $('main').empty(); 
-        $("main").html(`<div class = imageContainer><img src = "${mapUrl}"></div>`)
+        $("main").html(`
+        <section class = "venuemap-container">
+            <ul class="venue-list">
+            ${responseJson.response.groups[0].items.map(function(key){ 
+                const venueName = key.venue.name
+                const venueAddress = key.venue.location.address + "<br>" + key.venue.location.city + " " + key.venue.location.state + "<br>" + key.venue.location.country + " " + key.venue.location.postalCode
+                return `
+            <li>${venueName} <br> ${venueAddress}</li> `})};
+            
+            </ul>
+            <br>
+            
+            <div class = map-container>
+                <img src = "${mapUrl}">
+            </div>
+        </section>
+        <style>
+                li{
+                    
+                    box-shadow: 10px 10px 8px rgb(92, 167, 241);
+                }
+
+        </style>
+            `)
      }
 
 

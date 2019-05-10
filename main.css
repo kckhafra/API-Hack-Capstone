@@ -1,34 +1,105 @@
 *{
     box-sizing: border-box;
 }
-
+h1{
+    margin: 0;
+    
+    font-weight: bolder;
+    font-size: 45px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    
+    
+}
 input, label{
     display: block;
 }
-.radio-buttons{
-    display: flex;
+
+
+
+.banner {
+    background-image: url("https://www.goodnet.org/photos/620x0/24453.jpg");
 }
 
-.dropdown{
-    position: relative;
-    display: block;
-    width: 92px;
-}
-.dropdown2{
-    position: relative;
-    display: block;
-    width: 30px;
-}
-.dropdown-content2{
-    display: none;
-}
-.dropdown2:hover .dropdown-content2 {
-  display: block;
-}
-.dropdown-content{
-    display: none;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
+
+
+div{
+    height: 200px;
 }
 
+body{
+    font-family: 'Tenor Sans', sans-serif;
+}
+
+
+
+.venue-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 318px;
+    margin-top: 30px;
+    
+}
+
+
+
+label{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.venue-inputs {
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    border: 1px gray solid;
+    
+    font-size: 16px;
+}
+
+
+
+input#submit {
+    margin-top: 30px;
+    
+    background-color: rgb(92, 167, 241);
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+h1{
+    margin-top: 15px;
+}
+
+
+
+
+.venue-list{
+    display: block;
+    list-style: none;
+    width: 373px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.map-container{
+    display: block;
+    width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+
+.venuemap-container{
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 24px;
+}
