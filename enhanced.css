@@ -14,7 +14,7 @@
     .venue-container{
         margin-left: auto;
         margin-right: auto;
-        width: 140px;
+        width: 225px;
         margin-top: 30px;
         
     }
@@ -33,7 +33,7 @@
 @media only screen and (max-width: 650px){
 .map-container{
     display: block;
-    width: 200px;
+    width: 300px;
     margin-right: auto;
     margin-left: auto;
     }
@@ -42,7 +42,7 @@
 @media only screen and (max-width: 650px){
     img{
         
-        width: 200px;
+        width: 300px;
         }
     }
 
