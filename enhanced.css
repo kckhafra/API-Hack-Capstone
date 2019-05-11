@@ -1,0 +1,60 @@
+@media only screen and (max-width: 650px){
+    h1{
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    label{
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    .venue-container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 140px;
+        margin-top: 30px;
+        
+    }
+}
+
+@media only screen and (max-width: 650px){
+.venue-inputs {
+    height: 20px;
+    width: 140px;
+    border-radius: 5px;
+    border: 1px gray solid;
+    font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 650px){
+.map-container{
+    display: block;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    img{
+        
+        width: 200px;
+        }
+    }
+
+  
+
+@media only screen and (max-width: 650px){
+.venue-list{
+    display: block;
+    list-style: none;
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 16px;
+    }
+}
