@@ -133,7 +133,7 @@ function watchForm() {
                 const venueName = key.venue.name
                 const venueAddress = key.venue.location.address + "<br>" + key.venue.location.city + " " + key.venue.location.state + "<br>" + key.venue.location.country + " " + key.venue.location.postalCode
                 return `
-            <li>${venueName}<br>${venueAddress}</li> `})
+            <li>${venueName}<br>${venueAddress}</li> `}).join('')
             }
             </ul>
             
