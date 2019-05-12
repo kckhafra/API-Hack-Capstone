@@ -121,6 +121,11 @@ function watchForm() {
         console.log(responseJson)
         
         $('main').empty(); 
+        if (responseJson.response.totalResults === 0) {
+            $("main").html(`<section class="error-container"><p class = "error-message"> We have no venue reccomendations for this location at this time.</p>
+            <button class="return" id="return" type="button">Return</button></section>` )
+        }
+        else {
         $("main").html(`
         <section class = "venuemap-container">
             <ul class="venue-list">
@@ -150,6 +155,7 @@ function watchForm() {
         </style>
             `)
      }
+    }
 
      function handleReturn(){
         $('main').on("click", ".return",

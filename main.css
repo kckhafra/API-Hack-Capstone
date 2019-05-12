@@ -111,3 +111,18 @@ h1{
     margin-right: auto;
     margin-left: auto;
 }
+
+.error-container{
+    display: block;
+    width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 25px;
+    font-family: 'Tenor Sans', sans-serif;
+    color: red;
+    font-weight: bolder;
+}
+
+.input-info{
+    font-size: 10px;
+}
