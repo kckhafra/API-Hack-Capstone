@@ -3,7 +3,7 @@ const clientSecret = "OLIUSNXXSDOXGWYMPXJOUI2Z40MCQXTC1Y44Z2GABROXEOGB"
 const searchUrl = "https://api.foursquare.com/v2/venues/explore"
 
 function formatQueryParameters(params){
-    const queryItems = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+    const queryItems = Object.keys(params).map(key => `${key}=${params[key]}`)
     return queryItems.join('&')
 }
 

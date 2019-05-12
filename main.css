@@ -114,9 +114,7 @@ h1{
 
 .error-container{
     display: block;
-    width: 600px;
-    margin-right: auto;
-    margin-left: auto;
+    text-align: center;
     font-size: 25px;
     font-family: 'Tenor Sans', sans-serif;
     color: red;
