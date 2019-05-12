@@ -133,7 +133,8 @@ function watchForm() {
                 const venueName = key.venue.name
                 const venueAddress = key.venue.location.address + "<br>" + key.venue.location.city + " " + key.venue.location.state + "<br>" + key.venue.location.country + " " + key.venue.location.postalCode
                 return `
-            <li>${venueName} <br> ${venueAddress}</li> `})};
+            <li>${venueName}<br>${venueAddress}</li> `})
+            }
             </ul>
             
             <button class="return" id="return" type="button">Return</button>
@@ -145,14 +146,6 @@ function watchForm() {
                 <img src = "${mapUrl}">
             </section>
         </div>
-        
-        <style>
-                li{
-                    
-                    box-shadow: 10px 10px 8px rgb(92, 167, 241);
-                }
-
-        </style>
             `)
      }
     }
