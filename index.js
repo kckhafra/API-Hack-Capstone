@@ -52,7 +52,7 @@ function getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfV
             
         })
         .catch(err=>{
-            $('#js-error-message').text(`something went wrong${err.message}`)
+            $('js-error-message').text(`something went wrong${err.message}`)
         })
 }
 
@@ -127,6 +127,7 @@ function watchForm() {
         }
         else {
         $("main").html(`
+        
         <section class = "venuemap-container">
             <ul class="venue-list">
             ${responseJson.response.groups[0].items.map(function(key){ 
