@@ -52,7 +52,8 @@ function getVenueInfo(startingPoint, radiusValue, maxResults, timeOfDay, typeOfV
             
         })
         .catch(err=>{
-            $('js-error-message').text(`something went wrong${err.message}`)
+            $('main').html(`<section class="error-container"><p>Something went wrong. You may have a misspelling in your address input ${err.message}</p></section>
+            <button class="return" id="return" type="button">Return</button>`)
         })
 }
 
